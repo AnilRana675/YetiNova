@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '../lib/supabase';
 import logo from '../assets/YetiNovaLogo.svg';
 import { 
   Rocket, 
@@ -28,12 +29,28 @@ export function ComingSoon() {
 
     setLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setLoading(false);
-    setSubmitted(true);
-    console.log('Email submitted:', email);
+    try {
+      const { error: supabaseError } = await supabase
+        .from('waitlist')
+        .insert([{ email }]);
+
+      if (supabaseError) {
+        if (supabaseError.code === '23505') { // Unique violation
+          setSubmitted(true); // Treat as success to avoid leaking info, or show specific message
+          // For now, let's just show success as they are already on the list
+        } else {
+          throw supabaseError;
+        }
+      }
+      
+      setSubmitted(true);
+      console.log('Email submitted:', email);
+    } catch (err) {
+      console.error('Error submitting email:', err);
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
