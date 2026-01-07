@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yetinova.com/sitemap.xml
