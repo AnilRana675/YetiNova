@@ -153,7 +153,7 @@ export function ComingSoon() {
 
         {/* Footer Links */}
         <div className="text-sm text-slate-400 flex items-center justify-center gap-4">
-          <span>© 2026 YetiNova AI</span>
+          <span>&copy; 2026 YetiNova AI-Tech Pvt. Ltd.</span>
         </div>
       </div>
     </div>
