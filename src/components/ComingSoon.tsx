@@ -8,6 +8,7 @@ import {
   Mail
 } from 'lucide-react';
 
+
 export function ComingSoon() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -61,7 +62,7 @@ export function ComingSoon() {
           <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <img
             src={logo}
-            alt="YetiNova AI"
+            alt="YetiNova Logo"
             className="relative w-32 h-32 mx-auto rounded-2xl shadow-lg object-cover transform group-hover:scale-105 transition-transform duration-500"
           />
         </div>
